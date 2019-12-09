@@ -7,18 +7,39 @@ import {
     HeaderCenterWrap,
     HeaderCenterRefreshIco,
     HeaderRightWrap,
-    HeaderRightWrapIco,
-    HeaderMenu,
-    HeaderMenuLi,
-    HeaderMenuA,
-    HeaderMenuIco
+    HeaderRightWrapIco
 } from './styledHeader'
 
+import HeaderDropMenu from './HeaderMenu'
+
 export default class Header extends Component {
+    constructor() {
+        super()
+        this.state = {
+            isShow: false,
+
+        }
+
+    }
+
+    isShow_Click = () => {
+        if (this.state.isShow) {
+            this.setState({
+                isShow: false
+            })
+        } else {
+            this.setState({
+                isShow: true
+            })
+        }
+    }
+
     render() {
         return (
             <HeaderWrap>
-                <HeaderLeftWrap>
+                <HeaderLeftWrap
+                    onClick={this.isShow_Click}
+                >
                     <HeaderLeftWrapIco>
                     </HeaderLeftWrapIco>
                 </HeaderLeftWrap>
@@ -33,44 +54,12 @@ export default class Header extends Component {
                     <HeaderRightWrapIco>
                     </HeaderRightWrapIco>
                 </HeaderRightWrap>
-                <HeaderMenu>
-                    <HeaderMenuLi>
-                        <HeaderMenuA>
-                            <HeaderMenuIco></HeaderMenuIco>
-                            <span>热榜</span>
-                        </HeaderMenuA>
-                    </HeaderMenuLi>
-                    <HeaderMenuLi>
-                        <HeaderMenuA>
-                            <HeaderMenuIco></HeaderMenuIco>
-                            <span>热榜</span>
-                        </HeaderMenuA>
-                    </HeaderMenuLi>
-                    <HeaderMenuLi>
-                        <HeaderMenuA>
-                            <HeaderMenuIco></HeaderMenuIco>
-                            <span>热榜</span>
-                        </HeaderMenuA>
-                    </HeaderMenuLi>
-                    <HeaderMenuLi>
-                        <HeaderMenuA>
-                            <HeaderMenuIco></HeaderMenuIco>
-                            <span>热榜</span>
-                        </HeaderMenuA>
-                    </HeaderMenuLi>
-                    <HeaderMenuLi>
-                        <HeaderMenuA>
-                            <HeaderMenuIco></HeaderMenuIco>
-                            <span>热榜</span>
-                        </HeaderMenuA>
-                    </HeaderMenuLi>
-                    <HeaderMenuLi>
-                        <HeaderMenuA>
-                            <HeaderMenuIco></HeaderMenuIco>
-                            <span>热榜</span>
-                        </HeaderMenuA>
-                    </HeaderMenuLi>
-                </HeaderMenu>
+
+
+                {this.state.isShow ? (
+                    <HeaderDropMenu></HeaderDropMenu>
+                ) : ''}
+
 
             </HeaderWrap>
 
