@@ -12,6 +12,48 @@ import {
 
 } from './styledItem'
 export default class Item extends Component {
+    constructor() {
+        super()
+        this.state = {
+            info: {},
+            title: '',
+            img_url: '',
+            author: {},
+            time: '',
+            subject: {
+                1: '42区',
+                4: '图片',
+                100: '挨踢1024',
+                151: '你问我答',
+                177: '视频'
+
+            },
+            subject_now: '',
+            ups: '',
+            comments_count: '',
+            url: ''
+        }
+    }
+
+    componentDidMount() {
+        this.setState({
+            info: this.props.obj,
+            title: this.props.obj.title,
+            img_url: this.props.obj.img_url,
+            author: this.props.obj.submitted_user,
+            time: this.props.obj.action_time,
+            subject_now: this.state.subject[this.props.obj.subject_id],
+            ups: this.props.obj.ups,
+            comments_count: this.props.obj.comments_count,
+            url: this.props.obj.url
+
+        })
+
+
+
+
+    }
+
     render() {
         return (
             <ItemBox
@@ -19,23 +61,23 @@ export default class Item extends Component {
                 color="#e0e0e0"
                 radius={0.05}
             >
-                <ItemInfo>
+                <ItemInfo href={this.state.url}>
                     <LinkDetail>
                         <LinkTitle>
-                            
-                        【日本“美魔女大赛”，52岁美女夺冠】日本举办第十届“国民美魔女大赛”，“美魔女”指内在与外在都绽放光芒的35岁以上女性。此次参赛者平均年龄为44岁，年龄最小的是一位39岁的单亲妈妈。最终52岁的坂村熏从中脱颖而出，这个颜值身材也是很让人羡慕了。
-                        
+
+                            {this.state.title}
+
                         </LinkTitle>
 
                         <LinkAuthor>
-                            <span className="author-name">前美术课代表</span>
-                            <span className="time-update">刚刚入热榜</span> 
-                            <span className="category-name">42区</span> 
+                            <span className="author-name">{this.state.author.nick}</span>
+                            <span className="time-update">刚刚入热榜</span>
+                            <span className="category-name">{this.state.subject_now}</span>
                         </LinkAuthor>
                     </LinkDetail>
 
                     <LinkMatching>
-                        <img alt="" className="link-img" data-src="//img3.chouti.com/CHOUTI_20191207/EF3180286BF64C8AB99EA25769526DA8_W434H434.jpeg?imageView2/1/w/150/h/150/interlace/1" src="https://img3.chouti.com/CHOUTI_20191207/EF3180286BF64C8AB99EA25769526DA8_W434H434.jpeg?imageView2/1/w/150/h/150/interlace/1" lazy="loaded"></img>
+                        <img alt="" className="link-img" src={this.state.img_url} ></img>
                     </LinkMatching>
                 </ItemInfo>
 
@@ -45,25 +87,26 @@ export default class Item extends Component {
                             bcPosition="0 -38px"
                         ></RecommendItemIcon>
 
-                        <span className="operate-num">6</span>
+                        <span className="operate-num">{this.state.ups}</span>
                     </OperateItem>
                     <OperateItem>
-                        
+
                         <RecommendItemIcon
                             bcPosition="0 -70px"
                         ></RecommendItemIcon>
-                        <span className="operate-num">3</span>
+                        <span className="operate-num">{this.state.comment_count}</span>
                     </OperateItem>
                     <OperateItem>
-                        
+
                         <RecommendItemIcon
                             bcPosition="0 -102px"
                             height=".13rem"
                         ></RecommendItemIcon>
                     </OperateItem>
                 </LinkOperate>
-                
+
             </ItemBox>
+
         )
     }
 }

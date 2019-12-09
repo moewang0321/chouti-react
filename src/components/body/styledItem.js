@@ -19,14 +19,13 @@ export const ItemBox = border(
         background: #fbfbfb;
         margin-top: .1rem;
         box-shadow: 0 1px 2px 0 rgba(0,0,0,.15);
-
-
-
-    
     `
 )
 //信息部分
-export const ItemInfo = styled.a `
+export const ItemInfo = styled.a.attrs((props) => ({
+    href: props.href
+}))
+`
     padding: .1rem .08rem;
     display: flex;
 
@@ -51,6 +50,7 @@ export const LinkAuthor = styled.div `
 export const LinkMatching = styled.div `
     width: .75rem;
     height: .75rem;
+    background:#ccc;
     margin-left: .08rem;
     img{
         width: 100%;
