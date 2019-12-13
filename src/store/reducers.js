@@ -4,7 +4,11 @@ import {
 import {
     reducers as list
 } from '../pages/home/index'
+import {
+    reducers as detail
+} from '../pages/detail/index'
 
 export default combineReducers({
-    home: list
+    home: list,
+    detail: detail
 })

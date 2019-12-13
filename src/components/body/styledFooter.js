@@ -4,8 +4,13 @@ export const FooterWrap = styled.div `
     text-align:center
 `
 export const Footertext = styled.a `
-    color: #666;
+    color: #5d7eab;
     font-size: .13rem;
+`
+
+export const FootertextNor = styled(Footertext)
+`
+    color:#666
 `
 
 export const FooterOps = styled.div `
@@ -24,6 +29,7 @@ export const BackTopIco = styled.i `
     background: url(https://m.chouti.com/static/image/top.png);
     background-size: cover;
     vertical-align: sub;
+    margin: 0 .05rem;
 `
 
 export const FooterCpys = styled.div `

@@ -51,3 +51,39 @@
   font-size: .12rem;
   margin-left: .07rem;
 }
+
+.link-content {
+  padding: .1rem .1rem .2rem;
+}
+
+.loading-icon {
+  width: .2rem;
+  height: .2rem;
+  display: inline-block;
+  background: url('./assets//imgs/loading_more.gif');
+  background-size: cover;
+  margin-right: .2rem;
+}
+
+.comment-list {
+  width: 100%;
+  margin-top: .15rem;
+}
+
+.comment-list .no-comment {
+  border: 1px dashed #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: .2rem 0;
+}
+
+.comment-list .no-comment p.bold {
+  margin-bottom: .04rem;
+  font-size: .14rem;
+  font-weight: 700;
+}
+
+.comment-list .no-comment p {
+  color: #666;
+  font-size: .12rem;
+}

@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import $ from 'jquery'
+import moment from 'moment'
+import "moment/locale/zh-cn"
 import {
     ItemBox,
     ItemInfo,
@@ -11,11 +14,14 @@ import {
     RecommendItemIcon
 
 } from './styledItem'
-export default class Item extends Component {
+import { withRouter } from 'react-router-dom'
+@withRouter
+class Item extends Component {
     constructor() {
         super()
         this.state = {
             info: {},
+            id: '',
             title: '',
             img_url: '',
             author: {},
@@ -35,23 +41,34 @@ export default class Item extends Component {
         }
     }
 
+
+    commentClick = (e) => {
+        let rou = $(e.currentTarget).data('to')
+        this.props.history.push(rou)
+    }
+
     componentDidMount() {
+
+        let timeNow = new Date().getTime()
+        let timeStr = moment.duration(timeNow - this.props.obj.time_into_pool.toString().substr(0, 13), 'ms')
+        timeStr = timeStr.locale('zh-cn').humanize() + '前'
+        if (timeStr === '几秒') {
+            timeStr = '刚刚'
+        }
+
         this.setState({
             info: this.props.obj,
+            id: this.props.obj.id,
             title: this.props.obj.title,
-            img_url: this.props.obj.img_url,
+            img_url: this.props.obj.img_url + '?imageView2/1/w/150/h/150/interlace/1',
             author: this.props.obj.submitted_user,
-            time: this.props.obj.action_time,
+            time: timeStr,
             subject_now: this.state.subject[this.props.obj.subject_id],
             ups: this.props.obj.ups,
             comments_count: this.props.obj.comments_count,
             url: this.props.obj.url
 
         })
-
-
-
-
     }
 
     render() {
@@ -71,14 +88,18 @@ export default class Item extends Component {
 
                         <LinkAuthor>
                             <span className="author-name">{this.state.author.nick}</span>
-                            <span className="time-update">刚刚入热榜</span>
+                            <span className="time-update">{this.state.time} {this.props.url === '/all/hot' ? ('入热榜') : ('发布')}</span>
                             <span className="category-name">{this.state.subject_now}</span>
                         </LinkAuthor>
                     </LinkDetail>
+                    {
+                        this.props.obj.img_url ? (
+                            <LinkMatching>
+                                <img alt="" className="link-img" src={this.state.img_url} ></img>
+                            </LinkMatching>
+                        ) : ''
+                    }
 
-                    <LinkMatching>
-                        <img alt="" className="link-img" src={this.state.img_url} ></img>
-                    </LinkMatching>
                 </ItemInfo>
 
                 <LinkOperate>
@@ -89,12 +110,15 @@ export default class Item extends Component {
 
                         <span className="operate-num">{this.state.ups}</span>
                     </OperateItem>
-                    <OperateItem>
+                    <OperateItem
+                        onClick={this.commentClick}
+                        data-to={`/link/${this.state.id}`}
+                    >
 
                         <RecommendItemIcon
                             bcPosition="0 -70px"
                         ></RecommendItemIcon>
-                        <span className="operate-num">{this.state.comment_count}</span>
+                        <span className="operate-num">{this.state.comments_count}</span>
                     </OperateItem>
                     <OperateItem>
 
@@ -105,8 +129,9 @@ export default class Item extends Component {
                     </OperateItem>
                 </LinkOperate>
 
-            </ItemBox>
+            </ItemBox >
 
         )
     }
 }
+export default Item

@@ -1,0 +1,80 @@
+.comment-ul .comment-li,
+.comment-ul {
+    position: relative;
+}
+
+.comment-ul .comment-li.comment-depth-0 {
+    margin: .08rem 0;
+    background: url(/static/image/cent_secant_4_1.gif) repeat-x 0 bottom;
+}
+
+.comment-ul .comment-li:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: .1rem;
+    width: 0;
+    height: 100%;
+    border-left: 1px solid #e0e0e0;
+}
+
+.comment-content-con {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.comment-ul .comment-li.comment-depth-0 .comment-ul {
+    padding-left: .24rem;
+}
+
+.comment-content-con .comment-avatar img {
+    display: block;
+    width: .2rem;
+    height: .2rem;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+}
+
+.comment-content-con .comment-item-content {
+
+    flex: 1;
+    padding: 0 0 .1rem .04rem;
+    position: relative;
+}
+
+.comment-content-con .comment-item-content .comment-author-con {
+    font-size: .12rem;
+    color: #b8b8b8;
+    margin: .02rem 0;
+}
+
+.comment-content-con .comment-item-content .comment-author-con .author {
+    color: #666;
+}
+
+.comment-content-con .comment-item-content .comment-author-con .time {
+    padding: 0 .08rem;
+}
+
+.comment-content-con .comment-item-content .comment-content {
+    color: #333;
+    font-size: .14rem;
+}
+
+.comment-ul .comment-li.comment-depth-0 .comment-ul>.comment-li:after {
+    content: " ";
+    position: absolute;
+    top: .1rem;
+    left: -.14rem;
+    width: .14rem;
+    border-top: 1px solid #e0e0e0;
+}
+
+.comment-ul .comment-li:last-child:after {
+    content: "";
+    width: .14rem;
+    height: calc(100% - .1rem - 2px);
+    background: #fff;
+}

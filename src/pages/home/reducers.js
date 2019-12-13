@@ -1,5 +1,6 @@
 import {
-    LOADDATA
+    LOADDATA,
+    REFRESHDATA
 } from './action-types'
 const defaultState = {
     list: []
@@ -9,10 +10,28 @@ const defaultState = {
 export default (state = defaultState, action) => {
     switch (action.type) {
         case LOADDATA:
-            return {
-                list: action.data
+            if (JSON.stringify(action.data) === JSON.stringify(state.list)) {
+
+                return {
+                    list: action.data
+
+
+                }
+            } else {
+                return {
+                    list: [
+                        ...state.list,
+                        ...action.data
+
+                    ]
+                }
+
             }
-            default:
-                return state
+            case REFRESHDATA:
+                return {
+                    list: action.data
+                }
+                default:
+                    return state
     }
 }

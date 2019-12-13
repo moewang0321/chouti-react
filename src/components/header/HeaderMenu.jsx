@@ -1,21 +1,39 @@
 import React, { Component } from 'react'
-
+import $ from 'jquery'
 import {
     HeaderMenu,
     HeaderMenuLi,
     HeaderMenuA,
     HeaderMenuIco
 } from './styledHeaderMenu'
+import { withRouter } from 'react-router-dom'
 
-export default class HeaderDropMenu extends Component {
+@withRouter
+class HeaderDropMenu extends Component {
 
+    constructor(props) {
+        super(props)
+        this.state = {
 
+        }
+    }
+
+    handleClick = (event) => {
+        // console.log(this.props)
+        let text = $(event.currentTarget).children('a').children('span').html()
+        let url = $(event.currentTarget).children('a').children('span').data('to')
+        this.props.onChooseClick()
+        this.props.history.push(url)
+    }
 
     render() {
         return (
 
             <HeaderMenu>
-                <HeaderMenuLi>
+                <HeaderMenuLi
+                    onClick={this.handleClick}
+                    data-to="/hot"
+                >
                     <HeaderMenuA>
                         <HeaderMenuIco
                             bcPosition="0 0"
@@ -24,7 +42,9 @@ export default class HeaderDropMenu extends Component {
                         <span>热榜</span>
                     </HeaderMenuA>
                 </HeaderMenuLi>
-                <HeaderMenuLi>
+                <HeaderMenuLi
+                    onClick={this.handleClick}
+                >
                     <HeaderMenuA>
                         <HeaderMenuIco
                             bcPosition="0 -18px"
@@ -34,7 +54,10 @@ export default class HeaderDropMenu extends Component {
                         <span>42区</span>
                     </HeaderMenuA>
                 </HeaderMenuLi>
-                <HeaderMenuLi>
+                <HeaderMenuLi
+                    onClick={this.handleClick}
+                    data-to="/scoff"
+                >
                     <HeaderMenuA>
                         <HeaderMenuIco
                             bcPosition="0 -34px"
@@ -44,7 +67,10 @@ export default class HeaderDropMenu extends Component {
                         <span>段子</span>
                     </HeaderMenuA>
                 </HeaderMenuLi>
-                <HeaderMenuLi>
+                <HeaderMenuLi
+                    onClick={this.handleClick}
+                    data-to="/pic"
+                >
                     <HeaderMenuA>
                         <HeaderMenuIco
                             bcPosition="0 -47px"
@@ -54,7 +80,10 @@ export default class HeaderDropMenu extends Component {
                         <span>图片</span>
                     </HeaderMenuA>
                 </HeaderMenuLi>
-                <HeaderMenuLi>
+                <HeaderMenuLi
+                    onClick={this.handleClick}
+                    data-to="/tec"
+                >
                     <HeaderMenuA>
                         <HeaderMenuIco
                             bcPosition="0 -60px"
@@ -64,7 +93,10 @@ export default class HeaderDropMenu extends Component {
                         <span>挨踢1024</span>
                     </HeaderMenuA>
                 </HeaderMenuLi>
-                <HeaderMenuLi>
+                <HeaderMenuLi
+                    onClick={this.handleClick}
+                    data-to="/ask"
+                >
                     <HeaderMenuA>
                         <HeaderMenuIco
                             bcPosition="0 -75px"
@@ -81,3 +113,4 @@ export default class HeaderDropMenu extends Component {
         )
     }
 }
+export default HeaderDropMenu

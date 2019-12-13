@@ -3,6 +3,7 @@ import {
     FooterWrap,
     FooterOps,
     Footertext,
+    FootertextNor,
     Line,
     BackTopIco,
     FooterCpys,
@@ -14,7 +15,7 @@ export default class Footer extends Component {
             <FooterWrap>
 
                 <FooterOps>
-                    <Footertext>手机版</Footertext>
+                    <FootertextNor>手机版</FootertextNor>
                     <Line>丨</Line>
                     <Footertext>电脑版</Footertext>
                     <Footertext>

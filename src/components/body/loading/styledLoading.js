@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const IndicatorWrapper = styled.div `
-    padding: .2rem;
+    padding: .16rem .18rem;
     top: 50%;
     left: 50%;
     position: fixed;
@@ -12,13 +12,9 @@ export const IndicatorWrapper = styled.div `
     box-sizing: border-box;
     text-align: center;
 `
-
-export const SpinnerSnake = styled.div `
-    animation: spinner-rotate .8s linear infinite;
-    border-radius: 50%;
-    border: 4px solid #ccc;
-    border-right-color: transparent;
-    height: 24px;
-    width: 24px;
-    margin: 0 auto;
+export const IndicatorText = styled.p `
+    color: #fff;
+    text-align: center;
+    margin-top: .1rem;
+    font-size: .16rem;
 `

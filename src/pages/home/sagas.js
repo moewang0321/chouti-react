@@ -7,17 +7,15 @@ import * as types from './action-types'
 import {
     get
 } from '../../utils/http'
-
+//第一页请求数据
 function* loadData(action) {
     try {
         const result = yield get({
-            url: '/api/m/link/hot',
+            url: action.url || '/api/m/link/hot',
             params: {
-                afterTime: 0
+                [action.params]: action.paramsValue
             }
         })
-        console.log('page/sagas:')
-        console.log(result.data)
         yield put({
             type: types.LOADDATA,
             data: result.data
@@ -27,8 +25,24 @@ function* loadData(action) {
     }
 
 }
+//刷新时先清空列表
+function* refresh(action) {
+    try {
+
+        yield put({
+            type: types.REFRESHDATA,
+            data: []
+        })
+    } catch (e) {
+
+    }
+
+}
+
 
 export {
     types,
-    loadData as action
+    loadData as action,
+    refresh
+
 }
