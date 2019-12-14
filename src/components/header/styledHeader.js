@@ -62,3 +62,12 @@ export const HeaderRightWrapIco = styled(Ico)
         background-position: 0 -18px;
         margin: .12rem 0;
 `
+
+export const HeaderRightImg = styled.img.attrs((props) => ({
+        src: 'http://pic4.zhimg.com/50/v2-848b1a190d937e270e8d062d00865493_hd.jpg'
+}))
+`
+        width: .18rem;
+        height: .18rem;
+        margin: .12rem 0;
+`

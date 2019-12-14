@@ -15,8 +15,8 @@ export default class DetailChildComment extends Component {
                 {
                     this.props.obj.map((value) => {
                         return (
-                            <li className="comment-li" key={value.id}>
-                                <div className="comment-content-con no-child">
+                            <li className={`comment-li ${value.childs && value.childs.length ? 'child' : 'no-child'}`} key={value.id}>
+                                <div className="comment-content-con">
                                     <div className="comment-avatar">
                                         <img src={value.user.img_url} alt="" />
                                     </div>
@@ -31,6 +31,10 @@ export default class DetailChildComment extends Component {
 
                                     </div>
                                 </div>
+
+                                {value.childs && value.childs.length ? (
+                                    <DetailChildComment obj={value.childs}></DetailChildComment>
+                                ) : ''}
                             </li>
 
                         )

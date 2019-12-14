@@ -8,6 +8,9 @@ import {
 import {
     sagas as detail
 } from '../pages/detail/index'
+// import {
+//     sagas as like
+// } from '../components/body/index'
 let {
     GETLIST,
     REFRESH
@@ -18,6 +21,10 @@ let {
     GETCOMMENT,
     EMPTY
 } = detail.types
+
+// let {
+//     SETLIKE
+// } = like.types
 // console.log(home.type)
 
 
@@ -27,5 +34,6 @@ function* sagas() {
     yield takeEvery(GETITEM, detail.loadItem)
     yield takeEvery(GETCOMMENT, detail.loadComment)
     yield takeEvery(EMPTY, detail.refresh)
+    // yield takeEvery(SETLIKE, like.action)
 }
 export default sagas

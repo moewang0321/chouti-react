@@ -7,7 +7,8 @@ import {
     HeaderCenterWrap,
     HeaderCenterRefreshIco,
     HeaderRightWrap,
-    HeaderRightWrapIco
+    HeaderRightWrapIco,
+    HeaderRightImg
 } from './styledHeader'
 
 import {
@@ -16,8 +17,9 @@ import {
     HeaderMenuA,
     HeaderMenuIco
 } from './styledHeaderMenu'
-
+import { Modal } from 'antd-mobile';
 import { withRouter } from 'react-router-dom'
+const alert = Modal.alert;
 @withRouter
 class Header extends Component {
     constructor() {
@@ -34,6 +36,7 @@ class Header extends Component {
                 scoff: '段子'
 
             },
+            uId: localStorage.getItem('uId') || ''
         }
 
     }
@@ -81,6 +84,27 @@ class Header extends Component {
         })
     }
 
+    changeRoute = () => {
+        if (this.state.uId) {
+            alert('系统提示', '确定要退出登录吗', [
+                { text: '取消', onPress: () => console.log('取消') },
+                {
+                    text: '确认', onPress: () => {
+                        localStorage.setItem('uId', '')
+                        this.setState({
+                            uId: ''
+                        })
+                        this.forceUpdate();
+
+                    }
+                },
+            ])
+        } else {
+
+            this.props.history.push('/login')
+        }
+    }
+
     getPath(props) {
         return props.location.pathname === '/' ? 'hot' : props.location.pathname.substr(1)
     }
@@ -114,9 +138,19 @@ class Header extends Component {
                     </HeaderCenterRefreshIco>
                 </HeaderCenterWrap>
 
-                <HeaderRightWrap>
-                    <HeaderRightWrapIco>
-                    </HeaderRightWrapIco>
+                <HeaderRightWrap
+                    onClick={this.changeRoute}
+                >
+                    {
+                        this.state.uId ? (
+
+                            <HeaderRightImg></HeaderRightImg>
+                        ) : (
+                                <HeaderRightWrapIco>
+                                </HeaderRightWrapIco>
+
+                            )
+                    }
                 </HeaderRightWrap>
 
 

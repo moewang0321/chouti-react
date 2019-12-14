@@ -7,8 +7,12 @@ import {
 import {
     reducers as detail
 } from '../pages/detail/index'
+// import {
+//     reducers as like
+// } from '../components/body/index'
 
 export default combineReducers({
     home: list,
-    detail: detail
+    detail,
+    // like
 })

@@ -1,0 +1,114 @@
+.login .login-content {
+    padding: .2rem;
+}
+
+.login .login-content {
+    padding: .2rem;
+}
+
+.login .login-content .tab {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 80%;
+    height: .3rem;
+    margin: 0 auto;
+    border: 1px solid #000;
+}
+
+.login .login-content .tab .tab-li {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    color: #000;
+    text-align: center;
+    line-height: .3rem;
+    font-size: .16rem;
+}
+
+.login .login-content .tab .tab-li.active {
+    background: #000;
+    color: #fff;
+}
+
+.login .login-content .login-form {
+    width: 100%;
+    margin-top: .2rem;
+    border: 1px solid #ddd;
+}
+
+.login .login-content .login-form .input-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: .46rem;
+    line-height: .46rem;
+    padding-left: .16rem;
+    border-bottom: 1px solid #ddd;
+    font-size: .18rem;
+    position: relative;
+    background: #fff
+}
+
+.login .login-content .login-form .input-item .tel-input {
+    width: 100%;
+}
+
+.login .login-content .login-bottom {
+    margin: .2rem 0;
+}
+
+.login .login-content .login-bottom .login-btn {
+    width: 100%;
+    height: .44rem;
+    color: #fff;
+    background: #2e84eb;
+    font-size: .2rem;
+}
+
+.login .login-content .login-form .input-item .icon-box {
+    width: .23rem;
+    height: 100%;
+}
+
+.login .login-content .login-form .input-item .icon-box.eyes {
+    width: .38rem;
+}
+
+.login .login-content .login-form .input-item .eyes-icon {
+    width: .24rem;
+    height: .16rem;
+    display: block;
+    background-image: url(https://m.chouti.com/static/image/span_show.png);
+    background-size: cover;
+    margin-top: .15rem;
+}
+
+.login .login-content .login-form .input-item .area-code,
+.login .login-content .login-form .input-item input {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+.login .login-content .login-form .input-item .select-code {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    appearance: none;
+    z-index: 1;
+}
+
+.login .login-content .login-form .input-item .icon-box.code {
+    position: absolute;
+    right: 0;
+}
+
+.login .login-content .login-form .input-item .arrow-icon {
+    width: .08rem;
+    height: .14rem;
+    display: block;
+    background: url(https://m.chouti.com/static/image/span_choice.png);
+    background-size: cover;
+    margin-top: .16rem;
+}

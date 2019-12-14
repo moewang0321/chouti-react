@@ -8,7 +8,7 @@
     background: url(/static/image/cent_secant_4_1.gif) repeat-x 0 bottom;
 }
 
-.comment-ul .comment-li:before {
+.comment-ul .comment-li.child:before {
     content: "";
     position: absolute;
     top: 0;

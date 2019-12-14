@@ -12,7 +12,7 @@ import { withRouter } from 'react-router-dom'
 @withRouter
 class DetailHeader extends Component {
 
-    goBack = () => {
+    backClick = () => {
         this.props.history.goBack()
     }
 
@@ -21,7 +21,7 @@ class DetailHeader extends Component {
             <div>
                 <Header>
                     <HeaderLeft
-                        onClick={this.goBack}
+                        onClick={this.backClick}
                     >
                         <HeaderBackIco></HeaderBackIco>
                     </HeaderLeft>

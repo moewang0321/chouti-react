@@ -31,7 +31,7 @@ export default class DetailComment extends Component {
                     this.props.comment.map((value) => {
                         return (
                             <li
-                                className={`comment-li comment-depth-0 ${value.childs ? '' : 'no-child'}`}
+                                className={`comment-li comment-depth-0 ${value.childs ? 'child' : 'no-child'}`}
                                 key={value.id}>
                                 <div className="comment-content-con">
                                     <div className="comment-avatar">

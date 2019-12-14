@@ -15,6 +15,5 @@ export const IndicatorWrapper = styled.div `
 export const IndicatorText = styled.p `
     color: #fff;
     text-align: center;
-    margin-top: .1rem;
     font-size: .16rem;
 `

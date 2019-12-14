@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom'
-
+import $ from 'jquery'
 import Header from '../../components/header/Header'
 import { Content } from './index'
 
@@ -15,6 +15,12 @@ class Layout extends Component {
     }
 
     render() {
+        $('html').css({
+            'background': '#f5f5f5'
+        })
+        $('body').css({
+            'background': ''
+        })
         return (
             <div>
                 <Header

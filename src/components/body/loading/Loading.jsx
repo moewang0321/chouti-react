@@ -7,7 +7,13 @@ export default class Loading extends Component {
     render() {
         return (
             <IndicatorWrapper>
-                <img src="https://i.loli.net/2019/12/11/mjZ9rbKNUDi1Ig7.png" alt="" width="39px" />
+                <div className="loadingio-spinner-rolling-oj98v172vuj">
+                    <div className="loadingio-spinner-rolling-yt4bf8r6cuq">
+                        <div className="ldio-p5i29xcxacf">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
                 <IndicatorText>
                     加载中…
                 </IndicatorText>
@@ -16,3 +22,4 @@ export default class Loading extends Component {
         )
     }
 }
+

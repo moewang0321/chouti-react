@@ -6,9 +6,12 @@ export default class LoadingComment extends Component {
             <div className="comment-list">
 
                 <div className="no-comment">
-                    <p className="bold">
-                        <img src="https://i.loli.net/2019/12/11/mjZ9rbKNUDi1Ig7.png" alt="" width="15px" />
-                    </p>
+                    <div className="loadingio-spinner-rolling-ixip7akqtdk">
+                        <div className="ldio-7d8bjuepsox">
+                            <div></div>
+                        </div>
+                    </div>
+
                     <p>正在加载……</p>
                 </div>
             </div>

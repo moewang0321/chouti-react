@@ -44,7 +44,8 @@ class content extends Component {
         this.state = {
             list: [],
             length: 0,
-            isLoading: false
+            isLoading: false,
+            likeList: []
         }
         this.upDateThis = function () {
             console.log('刷新!')
@@ -81,12 +82,70 @@ class content extends Component {
             isLoading: true
         })
         this.props.loadData()
+        paramsValue = 0
     }
 
     resetIsLoading = () => {
         this.setState({
             isLoading: false
         })
+    }
+
+    likeChoose = (id) => {
+        if (localStorage.getItem('likeList') && JSON.parse(localStorage.getItem('likeList')).length) {
+
+            this.setState({
+                likeList: [...JSON.parse(localStorage.getItem('likeList'))]
+            })
+        } else {
+            this.setState({
+                likeList: []
+            })
+        }
+        setTimeout(() => {
+            if (localStorage.getItem('uId')) {
+                if (this.state.likeList.length) {
+                    if (this.state.likeList.indexOf(id) === -1) {
+
+                        let arr = this.state.likeList
+                        arr.push(id)
+                        this.setState({
+                            likeList: [...arr]
+                        }, () => {
+                            localStorage.setItem('likeList', JSON.stringify(this.state.likeList))
+                            console.log('添加state', this.state.likeList)
+                        })
+                    } else {
+                        let arr = this.state.likeList
+                        for (var i = 0; i < arr.length; i++) {
+
+                            if (arr[i] === id) {
+                                arr.splice(i, 1);
+                            }
+
+                        }
+                        this.setState({
+                            likeList: [...arr]
+                        }, () => {
+                            localStorage.setItem('likeList', JSON.stringify(this.state.likeList))
+                            console.log('取消state', this.state.likeList)
+                        })
+
+                    }
+                } else {
+                    this.setState({
+                        likeList: [id]
+                    }, () => {
+                        localStorage.setItem('likeList', JSON.stringify(this.state.likeList))
+                        console.log('无缓存', this.state.likeList)
+                    })
+                }
+
+            } else {
+                this.props.history.push('/login')
+            }
+
+        }, 0);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -103,6 +162,16 @@ class content extends Component {
     }
 
     async componentDidMount() {
+        if (localStorage.getItem('likeList') && JSON.parse(localStorage.getItem('likeList')).length) {
+
+            this.setState({
+                likeList: [...JSON.parse(localStorage.getItem('likeList'))]
+            })
+        } else {
+            this.setState({
+                likeList: []
+            })
+        }
         url = this.props.location.pathname
 
         if (url === '/hot') {
@@ -125,8 +194,14 @@ class content extends Component {
                         <div className="list-wrap">
                             {
                                 this.props.list.map((value) => {
+
                                     return (
-                                        < Item key={value.id} obj={value} url={url}></Item>
+                                        < Item
+                                            likeChoose={this.likeChoose}
+                                            key={value.id}
+                                            obj={value}
+                                            likeList={this.state.likeList}
+                                            url={url}></Item>
                                     )
 
                                 })
